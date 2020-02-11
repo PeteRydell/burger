@@ -16,7 +16,6 @@ function inputSql(ob) {
 
 var orm = {
   selectAll: function (tableInput, cb) {
-    // creates sql query
     var queryString = 'SELECT * FROM ' + tableInput + ";";
     connection.query(queryString, function (err, result) {
         // if error throw err

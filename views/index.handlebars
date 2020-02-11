@@ -3,7 +3,7 @@
 <h2>So many burgers to devour!</h2>
 
 <ul id="not-devoured">
-  {{#each Burgers}}
+  {{#each burgers}}
     {{#unless devoured}}
       <li>
         {{burger_name}}
@@ -18,7 +18,7 @@
 <h2>Burgers must be devoured!</h2>
 
 <ul id="devoured">
-  {{#each Burgers}}
+  {{#each burgers}}
     {{#if devoured}}
       <li>
 	      {{burger_name}}
