@@ -1,5 +1,15 @@
 var connection = require("../config/connection");
 
+function printQuestionMarks(num) {
+  let arr = [];
+
+  for (let i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
 function inputSql(ob) {
   var arr = [];
 
@@ -31,6 +41,7 @@ var orm = {
     queryString += cols.toString();
     queryString += ") ";
     queryString += "VALUES (";
+    queryString += printQuestionMarks(vals.length);
     queryString += ") ";
 
     connection.query(queryString, vals, function(err, result) {
