@@ -42,11 +42,19 @@ var orm = {
       cb(result);
     });
   },
-  
-  updateOne: function (tableName, updatedDataObject, id, cb) {
-    var queryString = 'UPDATE ?? SET ? WHERE id = ?'
-    connection.query(queryString, [tableName, updatedDataObject, id], function (err, result) {
-        if (err) throw err;
+
+  updateOne: function (tableName, obValues, condition, cb) {
+    var queryString = 'UPDATE' + table;
+
+    queryString += " SET ";
+    queryString += inputSql(obValues);
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function (err, result) {
+        if (err) { 
+          throw err;
+        }
         cb(result);
     });
   }
