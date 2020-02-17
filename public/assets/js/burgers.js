@@ -1,20 +1,12 @@
 $(function(){
-    $(".change-devour").on("click", function(event) {
-        var id = $(this).data("id");
-        var newDevour = $(this).data("newdevour");
-    
-        var newDevourState = {
-          devoured: newDevour
-        };
+    $(".change-devour").on("submit", function(event) {
+        var id = $(this).data("id").val();
     
         // Send the PUT request.
-        $.ajax("/api/burgers/" + id, {
-          type: "PUT",
-          data: newDevourState
-        }).then(
-          function() {
-            console.log("changed devoured to", newDevour);
-            // Reload the page to get the updated list
+        $.ajax({
+          method: "PUT",
+          url: "/burgers/" + burger_is
+        }).then(function() {
             location.reload();
           }
         );
