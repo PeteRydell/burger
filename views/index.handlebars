@@ -4,43 +4,45 @@
       <img src="/public/assets/image/burger-logo.png">
       <h1>Eat Da Burger</h1>
     </div>
-    <div class="col-md-6 text-center" class="eat">
+    <div class="col-md-12 text-center" class="eat">
       <h2>So many burgers to devour!</h2>
 
-      <ul id="not-devoured">
+      <div id="not-devoured">
         {{#each burgers}}
-          {{#unless devoured}}
-            <li>
+          {{#unless this.devoured}}
+            <div>
               {{burger_name}}
               <button class="change-devour" data-id="{{id}}" data-newdevour="{{devour}}" >
                 {{#if devour}}Devour it!{{else}}Devoured!{{/if}}
               </button>
-            </li>  
+            </div>  
           {{/unless}}
         {{/each}}
-      </ul>
+      </div>
 
       <h2>Burgers must be devoured!</h2>
 
-      <ul id="devoured">
+      <div id="devoured">
         {{#each burgers}}
-          {{#if devoured}}
-            <li>
+          {{#if this.devoured}}
+            <div>
               {{burger_name}}
-            </li>    
+            </div>    
           {{/if}}
         {{/each}}
-      </ul>
+      </div>
       </div>
   </div>
 </div>
-<h2>Add a burger</h2>
-<form class="create-form" action= "/api/burgers" method="POST">
+<div class="col-md-12 text-center" class="eat">
+  <h2>Add a burger</h2>
+  <form class="create-form" action= "/api/burgers" method="POST">
 
-  <div class="form-group">
-    <label for="ca">Burger Name:</label>
-    <input type="text" name="burger_name">
-  </div>
+    <div class="form-group">
+      <label for="ca">Burger Name:</label>
+      <input type="text" name="burger_name">
+    </div>
 
-  <button type="submit">Add burger</button>
-</form>
+    <button type="submit">Add burger</button>
+  </form>
+</div>

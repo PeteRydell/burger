@@ -1,5 +1,15 @@
 var connection = require("../config/connection");
 
+function printQuestionMarks(num) {
+  var arr = [];
+
+  for (var i = 0; i < num; i++) {
+    arr.push("?");
+  }
+
+  return arr.toString();
+}
+
 var orm = {
   selectAll: function (tableInput, cb) {
     var queryString = 'SELECT * FROM ' + tableInput + ";";
