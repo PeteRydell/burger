@@ -1,34 +1,39 @@
-<img src="../public/assets/image/burger-logo.png">
+<div class="container">
+	<div class="row">
+    <div class="col-md-12 text-center" id="top-bar">
+      <img src="/public/assets/image/burger-logo.png">
+      <h1>Eat Da Burger</h1>
+    </div>
+    <div class="col-md-6 text-center" class="eat">
+      <h2>So many burgers to devour!</h2>
 
-<h1>Burgers!</h1>
+      <ul id="not-devoured">
+        {{#each burgers}}
+          {{#unless devoured}}
+            <li>
+              {{burger_name}}
+              <button class="change-devour" data-id="{{id}}" data-newdevour="{{devour}}" >
+                {{#if devour}}Devour it!{{else}}Devoured!{{/if}}
+              </button>
+            </li>  
+          {{/unless}}
+        {{/each}}
+      </ul>
 
-<h2>So many burgers to devour!</h2>
+      <h2>Burgers must be devoured!</h2>
 
-<ul id="not-devoured">
-  {{#each burgers}}
-    {{#unless devoured}}
-      <li>
-        {{burger_name}}
-        <button class="change-devour" data-id="{{id}}" data-newdevour="{{devour}}" >
-          {{#if devour}}Devour it!{{else}}Devoured!{{/if}}
-        </button>
-      </li>  
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Burgers must be devoured!</h2>
-
-<ul id="devoured">
-  {{#each burgers}}
-    {{#if devoured}}
-      <li>
-	      {{burger_name}}
-      </li>    
-    {{/if}}
-  {{/each}}
-</ul>
-
+      <ul id="devoured">
+        {{#each burgers}}
+          {{#if devoured}}
+            <li>
+              {{burger_name}}
+            </li>    
+          {{/if}}
+        {{/each}}
+      </ul>
+      </div>
+  </div>
+</div>
 <h2>Add a burger</h2>
 <form class="create-form" action= "/api/burgers" method="POST">
 
